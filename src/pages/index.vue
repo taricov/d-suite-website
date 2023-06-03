@@ -55,65 +55,45 @@ const handleSearch = useDebounceFn(async () => {
       <h1
         v-motion-fade
         :delay="150"
-        class="text-3xl font-bold leading-snug text-center text-transparent lg:text-center lg:text-5xl bg-gradient-to-bl from-sky-600 to-emerald-600 m-auto bg-clip-text"
+        class="text-3xl font-bold leading-snug text-center text-transparent lg:text-center lg:text-5xl tc m-auto bg-clip-text"
       >
       A FREE and Open-Source <br/>Business toolkit 
       </h1>
       <h3
       v-motion-fade
         :delay="150"
-        class="relative text-lg font-bold leading-snug text-center text-transparent lg:text-center lg:text-xl bg-gradient-to-bl from-sky-600 to-emerald-600 m-auto bg-clip-text !mt-3 before:content-[''] before:w-full before:h-full before:rounded before:absolute before:top-0 before:left-0 before:bg-emerald-300 before:bg-opacity-10"
+        class="relative text-lg py-2 font-bold leading-snug text-center text-transparent lg:text-center lg:text-xl tc m-auto bg-clip-text !mt-3 before:content-[''] before:w-full before:h-full before:rounded before:absolute before:top-0 before:left-0 before:bg-emerald-300 before:bg-opacity-10"
         >
       
         D-Suite is dedicated for Daftra's users and ppl working in business in MENA
       </h3>
 
-      <div
-        v-motion-fade
-        :delay="250"
-        class="flex flex-wrap min-h-[140px] items-start justify-center lg:justify-start gap-x-4 gap-y-2 no-scrollbar"
-      >
-        <img
-          preload
-          src="https://i.imgur.com/ZgjFF3m.png"
-          class="w-full rounded-md lg:w-72 xl:w-80"
-          alt="lanyard profile readme"
-        />
+     
 
-        <img
-          preload
-          src="https://i.imgur.com/mbaEnBi.png"
-          class="w-full rounded-md lg:w-72 xl:w-80"
-          alt="lanyard visualizer"
-        />
-      </div>
-
-      <div
-        v-motion-fade
-        :delay="300"
-        class="grid place-items-center lg:flex gap-x-4 gap-y-2 lg:place-items-start lg:grid-cols-2"
-      >
-        <Button
-          :href="DISCORD"
+<section class="flex items-center justify-center w-full m-auto space-x-4">
+    <Button
+          href="/connect"
           :icon="IconLogin"
-          label="Join Discord Server"
+          label="Pick and Connect .. Try it now!"
           blank
+          class="bc"
         />
 
         <Button
-          href="https://github.com/phineas/lanyard"
-          :icon="IconGithub"
-          label="Open Source"
+          href="tutorial"
+          label="Learn More"
+          class="bc"
           blank
         />
-      </div>
+</section>
+      
     </header>
 
     <hr v-motion-fade :delay="350" class="border-brand/50" />
 
     <section v-motion-fade :delay="400" class="py-8 space-y-10">
       <div class="space-y-2">
-        <h2 class="text-2xl font-bold">How?</h2>
+        <h2 class="text-2xl font-bold">What is it?</h2>
 
         <p class="text-white/50">
           Lanyard is a service that makes it super easy to export your live
@@ -127,7 +107,7 @@ const handleSearch = useDebounceFn(async () => {
       </div>
 
       <div class="space-y-2">
-        <h2 class="text-2xl font-bold">How Does Monitoring Work?</h2>
+        <h2 class="text-2xl font-bold">How does it work?</h2>
 
         <p class="text-white/50">
           Lanyard uses a basic Discord Bot (which is open source as well) and
@@ -139,7 +119,26 @@ const handleSearch = useDebounceFn(async () => {
       </div>
     </section>
 
+
+
     <hr v-motion-fade-visible-once class="border-brand/50" />
+<section class="flex items-center justify-center w-full m-auto space-x-4">
+    <Button
+          href="/connect"
+          :icon="IconLogin"
+          label="Pick and Connect .. Try it now!"
+          blank
+          class="bc"
+        />
+
+        <Button
+          href="tutorial"
+          label="Learn More"
+          class="bc"
+          blank
+        />
+</section>
+
 
     <section v-motion-fade-visible-once class="py-8 space-y-4">
       <h2 class="text-2xl font-bold leading-tight">Try It Yourself</h2>
@@ -355,3 +354,11 @@ const handleSearch = useDebounceFn(async () => {
     <Stargazers />
   </main>
 </template>
+<style>
+.tc{
+@apply bg-gradient-to-bl from-amber-200 to-lime-600
+}
+.bc{
+@apply bg-lime-500/60 hover:bg-lime-500/80
+}
+</style>
