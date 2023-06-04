@@ -51,6 +51,9 @@ const handleSearch = useDebounceFn(async () => {
 
 <template>
   <main class="flex flex-col gap-y-10">
+  <div
+        v-motion-fade
+        class="sweep select-none text-6xl font-bold leading-snug text-center text-transparent lg:text-center lg:text-[170px] tc m-auto bg-clip-text" style='animation-delay:0.15s; animation-fill-mode:forwards'>D-Suite</div>
     <header class="pb-8 space-y-8 lg:pb-14 lg:pt-10">
       <h1
         v-motion-fade
@@ -361,4 +364,5 @@ const handleSearch = useDebounceFn(async () => {
 .bc{
 @apply bg-lime-500/60 hover:bg-lime-500/80
 }
+
 </style>
