@@ -43,12 +43,14 @@ const links: LinksProps[] = [
     v-motion-fade
     class="container flex flex-col items-center justify-between gap-4 mx-auto lg:flex-row lg:w-7/12"
   >
-    <NuxtLink to="/">
-      <img
+    <NuxtLink to="/" class="font-bold text-5xl m-0">
+      D-Suite
+
+      <!-- <img
         src="https://storage.googleapis.com/lanyard/static/lanyardtemplogo.png"
         alt="logo"
         class="w-44 lg:w-36"
-      />
+      />-->
     </NuxtLink>
 
     <ul class="items-center hidden space-x-3 lg:flex text-sm">

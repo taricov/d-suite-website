@@ -53,7 +53,7 @@ const handleSearch = useDebounceFn(async () => {
   <main class="flex flex-col gap-y-10">
   <div
         v-motion-fade
-        class="sweep select-none text-6xl font-bold leading-snug text-center text-transparent lg:text-center lg:text-[170px] tc m-auto bg-clip-text" style='animation-delay:0.15s; animation-fill-mode:forwards'>D-Suite</div>
+        class="sweep select-none text-6xl font-bold leading-snug text-center text-transparent lg:text-center lg:text-[170px] tc m-auto bg-clip-text" style='animation-delay:0.15s; animation-fill-mode:forwards anim'>D-Suite</div>
     <header class="pb-8 space-y-8 lg:pb-14 lg:pt-10">
       <h1
         v-motion-fade
@@ -65,7 +65,7 @@ const handleSearch = useDebounceFn(async () => {
       <h3
       v-motion-fade
         :delay="150"
-        class="relative text-lg py-2 font-bold leading-snug text-center text-transparent lg:text-center lg:text-xl tc m-auto bg-clip-text !mt-3 before:content-[''] before:w-full before:h-full before:rounded before:absolute before:top-0 before:left-0 before:bg-emerald-300 before:bg-opacity-10"
+        class="relative text-lg py-2 font-bold leading-snug text-center text-transparent lg:text-center lg:text-xl tc m-auto bg-clip-text !mt-3 before:content-[''] before:w-full before:h-full before:rounded-full before:absolute before:top-0 before:left-0 before:bg-emerald-300 before:bg-opacity-10"
         >
       
         D-Suite is dedicated for Daftra's users and ppl working in business in MENA
@@ -358,6 +358,27 @@ const handleSearch = useDebounceFn(async () => {
   </main>
 </template>
 <style>
+
+.anim{
+  color: #fff;
+  font-size: 10vw;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 6px;
+  display: inline-block;
+  position: relative;
+  font-family: 'Merriweather', serif;
+  mask-image: linear-gradient(-75deg, rgba(187, 49, 49, 0.6) 30%, #000 50%, rgba(0,0,0,.6) 70%);
+  -webkit-mask-image: linear-gradient(-75deg, rgba(187, 49, 49, 0.6) 30%, #000 50%, rgba(0,0,0,.6) 70%);
+  mask-size: 200%;
+  -webkit-mask-size: 200%;
+  animation: shine 2s linear infinite;
+}
+
+@keyframes shine {
+  from { -webkit-mask-position: 150%; }
+  to { -webkit-mask-position: -50%; }
+}
 .tc{
 @apply bg-gradient-to-bl from-amber-200 to-lime-600
 }
