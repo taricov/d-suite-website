@@ -99,13 +99,7 @@ const handleSearch = useDebounceFn(async () => {
         <h2 class="text-2xl font-bold">What is it?</h2>
 
         <p class="text-white/50">
-          Lanyard is a service that makes it super easy to export your live
-          Discord presence to an API endpoint
-          <code>(api.lanyard.rest/v1/users/:your_id)</code> and to a WebSocket
-          for you to use wherever you want. It is fully open-source and
-          powerful. You can use the API without deploying anything yourself -
-          but if you want to self host it, you have the option to, though it'll
-          require a tiny bit of configuration.
+          D-Suite is a business toolkit that aims for easing the life of the ERP operators in GCC & MENA region and the way they use the Daftra ERP by providing a set of tools, utilities, apps, and browser extensions to help make their experience more convenient and save time effectively.  
         </p>
       </div>
 
@@ -113,18 +107,18 @@ const handleSearch = useDebounceFn(async () => {
         <h2 class="text-2xl font-bold">How does it work?</h2>
 
         <p class="text-white/50">
-          Lanyard uses a basic Discord Bot (which is open source as well) and
-          monitors every user in
-          <Link :href="DISCORD" external blank> its Discord server</Link>. On
-          each presence change, Lanyard sends a WS signal to update the API
-          response.
+          Most of the products in the toolkit works out of the box using an API connector.
+          See the <Link href="/products" external blank class="underline">list of all the products</Link>.
+          We will soon provide a connection wrapper for the whole toolkit where you will be able to connect once and use all the products without much configuration.
+          See the guide on <Link href="/connect" external blank class="underline">How to connect using the API Key</Link>.
         </p>
       </div>
     </section>
+<!-- 
 
 
 
-    <hr v-motion-fade-visible-once class="border-brand/50" />
+    <hr v-motion-fade-visible-once class="border-brand/50 mb-0" />
 <section class="flex items-center justify-center w-full m-auto space-x-4">
     <Button
           href="/connect"
@@ -142,7 +136,6 @@ const handleSearch = useDebounceFn(async () => {
         />
 </section>
 
-
     <section v-motion-fade-visible-once class="py-8 space-y-4">
       <h2 class="text-2xl font-bold leading-tight">Try It Yourself</h2>
 
@@ -157,7 +150,6 @@ const handleSearch = useDebounceFn(async () => {
           />
 
           <div class="space-y-2">
-            <!-- Name -->
             <div class="flex items-center space-x-2">
               <span class="text-white/50">User</span>
               <span>
@@ -165,7 +157,6 @@ const handleSearch = useDebounceFn(async () => {
               </span>
             </div>
 
-            <!-- User status -->
             <div class="flex items-center space-x-2">
               <span class="text-white/50">User is</span>
               <div
@@ -175,7 +166,6 @@ const handleSearch = useDebounceFn(async () => {
               <span>{{ getStatus.name }}</span>
             </div>
 
-            <!-- Listening to Spotify -->
             <div class="flex items-center space-x-2">
               <span class="text-white/50">Listening to Spotify</span>
               <span>
@@ -354,7 +344,7 @@ const handleSearch = useDebounceFn(async () => {
 
     <hr v-motion-fade-visible-once class="border-brand/50" />
 
-    <Stargazers />
+    <Stargazers /> -->
   </main>
 </template>
 <style>
