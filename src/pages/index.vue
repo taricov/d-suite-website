@@ -65,7 +65,7 @@ const handleSearch = useDebounceFn(async () => {
       <h3
       v-motion-fade
         :delay="150"
-        class="relative text-lg py-2 font-bold leading-snug text-center text-transparent lg:text-center lg:text-xl tc m-auto bg-clip-text !mt-3 before:content-[''] before:w-full before:h-full before:rounded-full before:absolute before:top-0 before:left-0 before:bg-emerald-300 before:bg-opacity-10"
+        class="relative text-lg py-2 font-bold leading-snug text-center text-transparent lg:text-center lg:text-xl tc m-auto bg-clip-text !mt-3 before:content-[''] before:w-full before:h-full before:rounded-full before:absolute before:top-0 before:left-0 before:bg-[#afa6c1]/10"
         >
       
         D-Suite is dedicated for Daftra's users and ppl working in business in MENA
@@ -380,10 +380,10 @@ const handleSearch = useDebounceFn(async () => {
   to { -webkit-mask-position: -50%; }
 }
 .tc{
-@apply bg-gradient-to-bl from-amber-200 to-lime-600
+@apply bg-gradient-to-bl from-[#4a3c71] to-[#afa6c1]
 }
 .bc{
-@apply bg-lime-500/60 hover:bg-lime-500/80
+@apply bg-[#4a3c71] hover:bg-[#4a3c71]/80
 }
 
 </style>
