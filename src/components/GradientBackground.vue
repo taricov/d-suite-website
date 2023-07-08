@@ -2,7 +2,7 @@
   <div
     v-motion-fade
     :delay="500"
-    class="absolute inset-0 w-full h-full overflow-hidden bg-no-repeat pointer-events-none -z-10 lg:block bg-gradient-to-b from-[#70638f] to-[#13131A] via-[#4a3c71]/40"
+    class="absolute inset-0 w-full h-full overflow-hidden bg-no-repeat pointer-events-none -z-10 lg:block bg-gradient-to-b from-[#70638f] to-[#13131A] via-[#4a3c71]/80"
   />
 </template>
 
