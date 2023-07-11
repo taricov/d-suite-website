@@ -60,7 +60,7 @@ const handleSearch = useDebounceFn(async () => {
         :delay="150"
         class="text-3xl font-bold leading-snug text-center text-transparent lg:text-center lg:text-5xl tc m-auto bg-clip-text"
       >
-      A FREE and Open-Source <br/>Business toolkit 
+      A FREE and Open-Source <br/>Business Toolkit 
       </h1>
       <h3
       v-motion-fade

@@ -56,7 +56,7 @@ const links: LinksProps[] = [
     <ul class="items-center hidden space-x-3 lg:flex text-sm">
       <li v-for="l in links" :key="l.label" class="group flex items-center space-x-2 rounded px-2 py-1 bg-white/5 hover:bg-white/30 transition duration-200">
         <Component :is="l.icon" class="group-hover:animate-bounce"/>
-        <NuxtLink :href="l.url" target="_blank">{{l.label}}</NuxtLink>
+        <NuxtLink :href="l.url" >{{l.label}}</NuxtLink>
       </li>
     </ul>
   </nav>
