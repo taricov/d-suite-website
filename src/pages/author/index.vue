@@ -1,364 +1,126 @@
 <script lang="ts" setup>
-import { useDebounceFn } from "@vueuse/shared";
-import { useReadmeProjects } from "../../composables/useReadmeProjects";
 
-// Icons
-import IconChevronRight from "~icons/tabler/chevron-right";
-import IconChevronLeft from "~icons/tabler/chevron-left";
-import IconLogin from "~icons/tabler/login";
-import IconGithub from "~icons/tabler/brand-github";
-import IconApi from "~icons/tabler/api";
-
-const pageData = useReadmeProjects();
-const scrollContainer = ref<HTMLElement | null>(null);
-const playgroundInput = ref("");
-const magicPreviewError = ref(false);
-const result = reactive<any>({ lanyard: {} });
-const {
-  public: { API_BASE, DISCORD },
-} = useRuntimeConfig();
-
+const avatar = ref("https://www.thesamuraination.com/_next/image?url=%2Fstatic%2Fimages%2Fme.jpeg&w=256&q=75")
 useHead({
-  title: "Home",
+  title: "Author",
 });
 
-const handleClick = (direction: "prev" | "next") => {
-  scrollContainer.value.scrollBy({
-    left: direction === "prev" ? -200 : 200,
-    behavior: "smooth",
-  });
-};
-
-const getStatus = computed<{ color: string; name: string }>(
-  () =>
-    ({
-      online: { color: "bg-green-600", name: "Online" },
-      dnd: { color: "bg-red-600", name: "Do Not Disturb" },
-      idle: { color: "bg-yellow-600", name: "Idle" },
-      offline: { color: "bg-gray-200", name: "Offline" },
-    }[result.lanyard?.data?.discord_status || "offline"])
-);
-
-const handleSearch = useDebounceFn(async () => {
-  if (playgroundInput.value === "") return;
-
-  const response = await fetch(`${API_BASE}/${playgroundInput.value}`);
-  const data = await response.json();
-
-  result.lanyard = data;
-}, 150);
 </script>
 
 <template>
   <main class="flex flex-col gap-y-10">
-    <header class="pb-8 space-y-8 lg:pb-14 lg:pt-10">
-      <h1
-        v-motion-fade
-        :delay="150"
-        class="text-3xl font-bold leading-snug text-center text-transparent lg:text-center lg:text-5xl tc m-auto bg-clip-text"
-      >
-      A FREE and Open-Source <br/>Business toolkit 
-      </h1>
-      <h3
-      v-motion-fade
-        :delay="150"
-        class="relative text-lg py-2 font-bold leading-snug text-center text-transparent lg:text-center lg:text-xl tc m-auto bg-clip-text !mt-3 before:content-[''] before:w-full before:h-full before:rounded before:absolute before:top-0 before:left-0 before:bg-emerald-300 before:bg-opacity-10"
-        >
-      
-        D-Suite is dedicated for Daftra's users and ppl working in business in MENA
-      </h3>
-
-     
-
-<section class="flex items-center justify-center w-full m-auto space-x-4">
-    <Button
-          href="/connect"
-          :icon="IconLogin"
-          label="Pick and Connect .. Try it now!"
-          blank
-          class="bc"
-        />
-
-        <Button
-          href="tutorial"
-          label="Learn More"
-          class="bc"
-          blank
-        />
-</section>
-      
-    </header>
-
-    <hr v-motion-fade :delay="350" class="border-brand/50" />
-
-    <section v-motion-fade :delay="400" class="py-8 space-y-10">
-      <div class="space-y-2">
-        <h2 class="text-2xl font-bold">What is it?</h2>
-
-        <p class="text-white/50">
-          Lanyard is a service that makes it super easy to export your live
-          Discord presence to an API endpoint
-          <code>(api.lanyard.rest/v1/users/:your_id)</code> and to a WebSocket
-          for you to use wherever you want. It is fully open-source and
-          powerful. You can use the API without deploying anything yourself -
-          but if you want to self host it, you have the option to, though it'll
-          require a tiny bit of configuration.
-        </p>
-      </div>
-
-      <div class="space-y-2">
-        <h2 class="text-2xl font-bold">How does it work?</h2>
-
-        <p class="text-white/50">
-          Lanyard uses a basic Discord Bot (which is open source as well) and
-          monitors every user in
-          <Link :href="DISCORD" external blank> its Discord server</Link>. On
-          each presence change, Lanyard sends a WS signal to update the API
-          response.
-        </p>
-      </div>
-    </section>
-
-
-
-    <hr v-motion-fade-visible-once class="border-brand/50" />
-<section class="flex items-center justify-center w-full m-auto space-x-4">
-    <Button
-          href="/connect"
-          :icon="IconLogin"
-          label="Pick and Connect .. Try it now!"
-          blank
-          class="bc"
-        />
-
-        <Button
-          href="tutorial"
-          label="Learn More"
-          class="bc"
-          blank
-        />
-</section>
-
-
-    <section v-motion-fade-visible-once class="py-8 space-y-4">
-      <h2 class="text-2xl font-bold leading-tight">Try It Yourself</h2>
-
-      <div class="grid gap-4 lg:grid-cols-2">
-        <div class="flex flex-col space-y-4">
-          <input
-            v-model="playgroundInput"
-            type="text"
-            class="w-full px-4 py-2 transition-all rounded-lg outline-none appearance-none ring-white/30 focus:ring-1 bg-brand/40"
-            placeholder="Enter user ID..."
-            @keyup.capture="handleSearch"
-          />
-
-          <div class="space-y-2">
-            <!-- Name -->
-            <div class="flex items-center space-x-2">
-              <span class="text-white/50">User</span>
-              <span>
-                {{ result.lanyard.data?.discord_user?.username || "Unknown" }}
-              </span>
-            </div>
-
-            <!-- User status -->
-            <div class="flex items-center space-x-2">
-              <span class="text-white/50">User is</span>
-              <div
-                class="w-3 h-3 transition-colors rounded-full"
-                :class="getStatus.color"
-              />
-              <span>{{ getStatus.name }}</span>
-            </div>
-
-            <!-- Listening to Spotify -->
-            <div class="flex items-center space-x-2">
-              <span class="text-white/50">Listening to Spotify</span>
-              <span>
-                {{ result.lanyard.data?.listening_to_spotify ? "Yes" : "No" }}
-              </span>
-            </div>
-          </div>
-
-          <div
-            v-motion-fade
-            v-if="result.lanyard.error?.code === 'user_not_monitored'"
-            class="flex flex-col space-y-2"
+    <div class="mb-2">
+      <div class="container flex justify-center mx-auto pt-16">
+        <div>
+          <p class="text-6xl text-center font-bold pb-1">Author</p>
+          <h1
+            class="text-md text-center pb-4 mx-auto text-slate-100/50 capitalize"
           >
-            <Button
-              :href="DISCORD"
-              :icon="IconLogin"
-              label="Join Discord Server"
-              blank
-            />
-
-            <span class="text-xs text-brand">
-              Did you join the Discord server?
-            </span>
-          </div>
-        </div>
-
-        <div class="overflow-hidden">
-          <Highlight :code="JSON.stringify(result.lanyard, null, 2)" />
+            About the project author and a background
+          </h1>
         </div>
       </div>
-    </section>
-
-    <hr v-motion-fade-visible-once class="border-brand/50" />
-
-    <section
-      v-motion-fade-visible-once
-      class="grid py-8 gap-y-6 gap-x-10 lg:grid-cols-2 lg:justify-between"
-    >
-      <div class="space-y-4 lg:pb-4">
-        <h2 class="text-2xl font-bold leading-tight">The magic</h2>
-
-        <p class="text-white/50">
-          Lanyard API is meant to create whatever you want using the data it
-          provides. People have already started creating amazing projects. Let's
-          preview one of them,
-          <Link
-            href="https://github.com/cnrad/lanyard-profile-readme"
-            external
-            blank
-            >lanyard-profile-readme</Link
-          >. You can embed the result in your website or GitHub-like readme.
-        </p>
-
-        <div class="space-y-1">
-          <Button
-            href="/api/introduction"
-            label="Read more about the API"
-            :icon="IconApi"
-          />
-
-          <p class="text-xs text-white/50">
-            {{
-              playgroundInput && magicPreviewError === false
-                ? "🤯 Now, isn't that cool?"
-                : "✨ Enter user ID to see the magic"
-            }}
-          </p>
-        </div>
-      </div>
-
-      <div class="space-y-4">
-        <input
-          v-model="playgroundInput"
-          type="text"
-          class="w-full px-4 py-2 transition-all rounded-lg outline-none appearance-none ring-white/30 focus:ring-1 bg-brand/40"
-          placeholder="Enter user ID to see the magic"
-          @keyup.capture="handleSearch"
-        />
-
-        <img
-          v-show="playgroundInput && magicPreviewError === false"
-          v-motion-fade
-          :src="`https://lanyard.cnrad.dev/api/${playgroundInput}`"
-          alt="lanyard profile readme"
-          @error="magicPreviewError = true"
-          @load="magicPreviewError = false"
-        />
-
-        <p
-          v-if="magicPreviewError && playgroundInput !== ''"
-          v-motion-fade
-          class="text-sm leading-tight text-white/50"
-        >
-          Make sure you put the right ID and you joined Lanyard's Discord
-          server.
-        </p>
-      </div>
-    </section>
-
-    <hr v-motion-fade-visible-once class="border-brand/50" />
-
-    <section v-motion-fade-visible-once class="py-8 space-y-4">
-      <div
-        class="flex flex-col justify-between leading-tight lg:items-center lg:flex-row"
-      >
-        <h2 class="text-2xl font-bold leading-tight">Community Projects</h2>
-
-        <div class="flex items-center space-x-2">
-          <p class="text-sm text-white/50">
-            {{ !pageData.loading && `${pageData.projects.length} in total` }}
-          </p>
-
-          <div class="items-center hidden space-x-1 lg:flex">
-            <button
-              type="button"
-              class="p-1 transition-colors rounded-full bg-brand hover:bg-brand/50"
-              @click="handleClick('prev')"
+      <div class="w-full px-10 pt-10">
+        <div class="container mx-auto">
+          <div
+            role="block"
+            aria-label="about the author..."
+            class="flex items-center justify-center"
+          >
+            <div
+              role="listitem"
+              class=" relative mt-16"
             >
-              <IconChevronLeft />
-            </button>
-
-            <button
-              type="button"
-              class="p-1 transition-colors rounded-full bg-brand hover:bg-brand/50"
-              @click="handleClick('next')"
-            >
-              <IconChevronRight />
-            </button>
+              <div class="rounded overflow-hidden shadow-md hover:shadow-xl transition duration-200">
+                <div class="absolute -mt-20 w-full flex justify-center">
+                  <div class="h-32 w-32">
+                    <img
+                      :src="avatar"
+                      alt="Taric Ov's personal image"
+                      role="img"
+                      class="rounded-full object-cover h-full w-full shadow-md"
+                    />
+                  </div>
+                </div>
+                <div class="px-6 mt-16">
+                  <h1 class="font-bold text-3xl text-center mb-1">Taric Ov</h1>
+                  <p class="mx-auto text-sm text-center shadow px-3 py-1 bg-slate-300/5 rounded w-fit">Software Engineer</p>
+                  <p class="text-center  text-base pt-3 font-normal">
+                    Software Eng. 🎧 I build something new every week 💪 Samurai 🥷 Radio-ist @thesamuraination.com 🎙️ content creator ✏️ AI hassler 🤖
+                  </p>
+                  <div class="w-full flex justify-center pt-5 pb-5">
+                    <a target="_blank" href="https://github.com/taricov"  class="mx-5 hover:opacity-70 transition duration-300">
+                      <div aria-label="Github" role="img">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="#718096"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="feather feather-github"
+                        >
+                          <path
+                            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+                          ></path>
+                        </svg>
+                      </div>
+                    </a>
+                    <a target="_blank" href="https://linkedin.com/in/taricov"  class="mx-5 hover:opacity-70 transition duration-300">
+                      <div aria-label="Twitter" role="img">
+                        
+<svg xmlns="http://www.w3.org/2000/svg"   width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="#718096"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="feather feather-github"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                      </div>
+                    </a>
+                   
+                    <a target="_blank" href="https://instgram.com/taric.ov"  class="mx-5 hover:opacity-70 transition duration-300">
+                      <div aria-label="Instagram" role="img">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="#718096"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="feather feather-instagram"
+                        >
+                          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                          <path
+                            d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
+                          ></path>
+                          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-
-      <div
-        ref="scrollContainer"
-        class="grid grid-flow-col overflow-x-auto no-scrollbar snap-x snap-mandatory gap-x-4"
-      >
-        <Loader v-if="pageData.loading" class="w-full h-24" />
-
-        <p v-else-if="pageData.error" class="text-white/50">
-          An error occured.
-        </p>
-
-        <CardCommunityProject
-          v-else
-          v-for="(project, index) in pageData.projects"
-          :key="`community-project-${index}`"
-          v-bind="project"
-        />
-      </div>
-    </section>
-
-    <hr v-motion-fade-visible-once class="border-brand/50" />
-
-    <section v-motion-fade-visible-once class="py-8 space-y-4">
-      <h2 class="text-2xl font-bold leading-tight">Used By</h2>
-
-      <div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-white/50">
-        <Loader v-if="pageData.loading" class="w-full h-40" />
-
-        <p v-else-if="pageData.error" class="text-white/50">
-          An error occured.
-        </p>
-
-        <Link
-          v-else
-          v-for="website in pageData.websites"
-          :key="`used-by-${website}`"
-          :href="`https://${website}`"
-          external
-          blank
-        >
-          {{ website }}
-        </Link>
-      </div>
-    </section>
-
-    <hr v-motion-fade-visible-once class="border-brand/50" />
-
-    <Stargazers />
+    </div>
   </main>
 </template>
 <style>
-.tc{
-@apply bg-gradient-to-bl from-amber-200 to-lime-600
+.tc {
+  @apply bg-gradient-to-bl from-amber-200 to-lime-600;
 }
-.bc{
-@apply bg-lime-500/60 hover:bg-lime-500/80
+.bc {
+  @apply bg-lime-500/60 hover:bg-lime-500/80;
 }
 </style>
