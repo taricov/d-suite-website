@@ -72,16 +72,19 @@ useHead({
 </script>
 
 <template>
-  <div class="min-h-screen px-6 py-10 text-white lg:px-0">
+  <NuxtLayout>
+  <!-- <div class="min-h-screen px-6 py-10 text-white lg:px-0">
     <Navbar />
+    <Footer /> -->
     <NuxtPage class="container py-16 mx-auto lg:w-7/12" />
-    <Footer />
 
     <!-- Absolute items -->
     <!-- <FloatingButton /> -->
-    <NuxtLoadingIndicator color="#D7BB87" />
+    <!-- <NuxtLoadingIndicator color="#fff" />
     <GradientBackground />
-  </div>
+    
+  </div> -->
+  </NuxtLayout>
 </template>
 
 <style lang="scss">
