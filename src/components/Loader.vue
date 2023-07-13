@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center justify-center">
+  <div class="flex items-center justify-center ">
     <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 24 24">
       <path
         fill="#888888"
@@ -13,7 +13,7 @@
       >
         <animateTransform
           attributeName="transform"
-          dur="1s"
+          dur="10s"
           from="0 12 12"
           repeatCount="indefinite"
           to="360 12 12"

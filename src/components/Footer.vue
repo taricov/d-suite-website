@@ -19,6 +19,6 @@ const {
       <Link href="https://github.com/taricov" external blank>@taricov</Link>
     </span>
 
-    <Link :href="GITHUB_REPO" external blank> Open source on GitHub </Link>
+    <Link :href="GITHUB_REPO" external blank> Open-sourced on GitHub </Link>
   </footer>
 </template>

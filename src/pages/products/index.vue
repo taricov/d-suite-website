@@ -14,7 +14,7 @@ const allProducts = ref<any>([
         <h5 class="mb-3 text-base font-semibold text-gray-900 md:text-6xl dark:text-white text-center">
             List Of Products
         </h5>
-        <p class="text-sm font-normal text-gray-500 dark:text-gray-400 text-center">Connect with one of our available wallet providers or create a new one.</p>
+        <p class="text-sm font-normal text-gray-500 dark:text-gray-400 text-center">Learn more about our ready-to-use tools and apps to leverage your business effeciency.</p>
         <ul class="my-4 space-y-3">
           <li v-for="prod in [...allProducts,...allProducts]" :key="prod.name">
                 <a :href="prod.link" class="flex items-center justify-between p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50/5 hover:bg-gray-100/10 group hover:shadow transition duration-300 dark:text-white">

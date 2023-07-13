@@ -1,59 +1,18 @@
 <script lang="ts" setup>
-import { useDebounceFn } from "@vueuse/shared";
-import { useReadmeProjects } from "../composables/useReadmeProjects";
-
 // Icons
-import IconChevronRight from "~icons/tabler/chevron-right";
-import IconChevronLeft from "~icons/tabler/chevron-left";
 import IconLogin from "~icons/tabler/login";
-import IconGithub from "~icons/tabler/brand-github";
-import IconApi from "~icons/tabler/api";
-
-const pageData = useReadmeProjects();
-const scrollContainer = ref<HTMLElement | null>(null);
-const playgroundInput = ref("");
-const magicPreviewError = ref(false);
-const result = reactive<any>({ lanyard: {} });
-const {
-  public: { API_BASE, DISCORD },
-} = useRuntimeConfig();
 
 useHead({
   title: "Home",
 });
 
-const handleClick = (direction: "prev" | "next") => {
-  scrollContainer.value.scrollBy({
-    left: direction === "prev" ? -200 : 200,
-    behavior: "smooth",
-  });
-};
-
-const getStatus = computed<{ color: string; name: string }>(
-  () =>
-    ({
-      online: { color: "bg-green-600", name: "Online" },
-      dnd: { color: "bg-red-600", name: "Do Not Disturb" },
-      idle: { color: "bg-yellow-600", name: "Idle" },
-      offline: { color: "bg-gray-200", name: "Offline" },
-    }[result.lanyard?.data?.discord_status || "offline"])
-);
-
-const handleSearch = useDebounceFn(async () => {
-  if (playgroundInput.value === "") return;
-
-  const response = await fetch(`${API_BASE}/${playgroundInput.value}`);
-  const data = await response.json();
-
-  result.lanyard = data;
-}, 150);
 </script>
 
 <template>
   <main class="flex flex-col gap-y-10">
   <div
         v-motion-fade
-        class="sweep select-none text-6xl font-bold leading-snug text-center text-transparent lg:text-center lg:text-[170px] tc m-auto bg-clip-text" style='animation-delay:0.15s; animation-fill-mode:forwards anim'>D-Suite</div>
+        class="sweep select-none text-[100px] font-bold leading-snug text-center text-transparent lg:text-center lg:text-[170px] tc m-auto bg-clip-text" style='animation-delay:0.15s; animation-fill-mode:forwards anim'>D-Suite</div>
     <header class="pb-8 space-y-8 lg:pb-14 lg:pt-10">
       <h1
         v-motion-fade
