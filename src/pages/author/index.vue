@@ -84,7 +84,7 @@ useHead({
                       </div>
                     </a>
                    
-                    <a target="_blank" href="https://instgram.com/taric.ov"  class="mx-5 hover:opacity-70 transition duration-300">
+                    <a target="_blank" href="https://instagram.com/taric.ov"  class="mx-5 hover:opacity-70 transition duration-300">
                       <div aria-label="Instagram" role="img">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
