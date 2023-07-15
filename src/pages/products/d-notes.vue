@@ -21,7 +21,7 @@ definePageMeta({
 						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
 					</svg>
 					<div class="ml-3">
-						<dt class="text-lg font-medium">Quisque at urna</dt>
+						<dt class="text-lg font-medium">Quisque </dt>
 						<dd class="mt-2 dark:text-gray-400">Vivamus ultricies bibendum tortor, molestie imperdiet justo cursus eu. Donec quis arcu magna. Integer tempor egestas dolor.</dd>
 					</div>
 				</div>
