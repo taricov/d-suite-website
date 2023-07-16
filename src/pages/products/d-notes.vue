@@ -25,7 +25,7 @@ definePageMeta({
 						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
 					</svg>
 					<div class="ml-3">
-						<dt class="text-lg font-medium">Easy Noting</dt>
+						<dt class="text-lg font-medium">Easy noting</dt>
 						<dd class="mt-2 dark:text-gray-400">Take notes as easy as it hadn't been before.</dd>
 					</div>
 				</div>
