@@ -1,7 +1,3 @@
-<script setup lang="ts">
-const prodColor =ref("")
-</script>
-
 <template>
   <div
     v-motion-fade

@@ -9,8 +9,7 @@
   <!-- Absolute items -->
   <!-- <FloatingButton /> -->
   <NuxtLoadingIndicator color="#fff" />
-  <!-- <GradientBackgroundCustom /> -->
-  <GradientNotes />
+  <GradientBar />
   
 </div>
 </template>
